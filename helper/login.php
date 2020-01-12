@@ -16,7 +16,6 @@ if ( !empty( $_POST ) ) {
         while($row = $stmt->fetch()) {
             if(password_verify($password, $hash)) {
                 session_start();
-                setcookie("isLoggedIn" [,true] );
                 $_SESSION['user']       = $user;
                 $result = ['status'     => 'success',
                            'message'    => 'Du wurdest erfolgreich eingeloggt!',
