@@ -1,0 +1,127 @@
+body {
+    padding: 2rem 2rem;
+    background-color: #9eaeae;
+}
+
+@media (max-width: 576px) {
+    body {
+        padding: 1rem 1rem;
+    }
+}
+
+small {
+    color: #7E918F;
+}
+
+.heading {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    color: #7E918F;
+}
+
+.intro {
+
+}
+
+.addFood {
+    margin-bottom: 2rem;
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+    bottom: .5em;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    margin-left: 0;
+}
+
+.dataTables-wrapper {
+    width: 100%;
+}
+
+#foodTable-filter {
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+}
+
+table.dataTable {
+    border-collapse: collapse;
+}
+
+table.dataTable > tbody > tr {
+    border-left: 10px solid;
+}
+
+table.dataTable > tbody > tr[foodstatus="danger"] {
+    border-color: #FB4542;
+}
+table.dataTable > tbody > tr[foodstatus="warning"] {
+    border-color: #DFEDAB;
+}
+table.dataTable > tbody > tr[foodstatus="good"] {
+    border-color: #65af6c;
+}
+
+.legende ul {
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+}
+
+.legende ul li:not(:first-of-type) {
+    margin-left: 1rem;
+}
+
+.legende ul li span {
+    display: inline-block;
+    width: 10px;
+    height: 13px;
+}
+
+.danger {
+    background-color: #F5C6CB;
+}
+.warning {
+    background-color: #FFEEBA;
+}
+.good {
+    background-color: #65af6c;
+}
+
+.modal-body form {
+    padding: 1rem 3px;
+}
+
+.modal-body h2{
+    text-align: center;
+    margin: 1rem;
+}
+
+/* loginScreen.php */
+
+.container .login {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 100%;
+}
+
+.container .login h2 {
+    color: #7E918F;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.container .login form{
+    margin-bottom: 1rem;
+    padding: 2rem 1rem;
+}
