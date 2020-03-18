@@ -1,17 +1,25 @@
 <?php
-require '../functions/Manager.php';
 
-$manager = new Manager();
-$conn = $manager->connect();
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
 
-$stmt = $conn->prepare("DELETE FROM food WHERE foodName = ?");
-$stmt->bind_param('s', htmlspecialchars($_POST['foodName']));
-$stmt->execute();
+    require '../functions/HandleFood.php';
 
-$result = ['status' => 'success'];
+    $data = new HandleFood();
+    $manager = new Manager();
+    $foodTableName = $data->getFoodTableName();
+    $foodName = htmlspecialchars($_POST['foodName']);
+    $conn = $manager->connect();
 
-$stmt->close();
-$conn->close();
+    $stmt = $conn->prepare("DELETE FROM $foodTableName WHERE foodName = ?");
+    $stmt->bind_param('s', $foodName);
+    $stmt->execute();
 
-echo json_encode($result);
+    $result = ['status' => 'success'];
+
+    $stmt->close();
+    $conn->close();
+
+    echo json_encode($result);
 ?>

@@ -1,6 +1,8 @@
 <?php
 require '../functions/Manager.php';
 
+session_start();
+
 if ( !empty( $_POST ) ) {
 
     if ( isset( $_POST['userName'] ) && isset( $_POST['password'] ) ) {
@@ -15,11 +17,10 @@ if ( !empty( $_POST ) ) {
 
         while($row = $stmt->fetch()) {
             if(password_verify($password, $hash)) {
-                session_start();
                 $_SESSION['user']       = $user;
+                $_SESSION['name']       = $user;
                 $result = ['status'     => 'success',
-                           'message'    => 'Du wurdest erfolgreich eingeloggt!',
-                           'session'    => $user . ' ' . $_SESSION['user']];
+                           'message'    => 'Du wurdest erfolgreich eingeloggt!'];
             } else {
                 $result = ['status'     => 'noPermission',
                            'message'    => 'Username oder Passwort falsch!'];

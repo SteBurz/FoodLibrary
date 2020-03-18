@@ -22,8 +22,8 @@ while($stmt->fetch()) {
 $stmt->close();
 
 if( !$userExists ){
-    $tableName = "food".$userName;
-    $password   = password_hash ( $_POST['password'], PASSWORD_DEFAULT );
+    $tableName = "food".strtolower($userName);
+    $password   = password_hash ( htmlspecialchars($_POST['password']), PASSWORD_DEFAULT );
 
     $stmt    = $conn->prepare("INSERT INTO users (userName, password, tableName) VALUES ( ? , ? , ?)");
     $stmt->bind_param('sss', $userName, $password, $tableName);

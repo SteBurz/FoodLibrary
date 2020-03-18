@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: MacSteffen
- * Date: 25.07.19
- * Time: 20:40
- */
 
 require 'Manager.php';
 
@@ -14,9 +8,9 @@ class HandleFood
 
         $manager = new Manager();
         $conn    = $manager->connect();
-        $query   = "SELECT * FROM food ";
+        $foodTableName = $this->getFoodTableName();
 
-        $stmt    = $conn->prepare($query);
+        $stmt    = $conn->prepare("SELECT * FROM $foodTableName");
         $stmt->execute();
         $stmt->bind_result($foodName, $amount, $amountType, $bestBefore);
 
@@ -54,6 +48,11 @@ class HandleFood
         $stmt->close();
         $conn->close();
 
+    }
+
+
+    function getFoodTableName() {
+        return "food".strtolower($_SESSION['name']);
     }
 
 }

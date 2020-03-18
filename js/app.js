@@ -3,6 +3,7 @@ $(document).ready(function(){
     changeFoodEntry();
     dataTables();
     logIn();
+    logOut();
     signUp();
 });
 
@@ -11,14 +12,12 @@ function createNewFoodEntry() {
         $('#addNewFood_form').submit(function(e) {
             e.preventDefault();
 
-            $.post('http://www.louis-and-cartier.com/FoodLibrary/helper/addNewFood.php',
-                {
+            $.post('./helper/addNewFood.php', {
                     foodName: $('#foodName').val(),
                     amount: $('#foodAmount').val(),
                     amountType: $('#foodAmountType').val(),
                     bestBefore: $('#foodBestBefore').val()
-                }
-            ).done(function (data) {
+            }).then(function (data) {
                 data = JSON.parse(data);
                 if ( data.status === 'success'){
                     showMessage({
@@ -51,7 +50,7 @@ function changeFoodEntry() {
        $('#changeFood_newAmount').val(selectedFood_amount).attr('placeholder', selectedFood_amount);
        $('#changeFood_newBestBefore').val(selectedFood_bestBefore).attr('placeholder', selectedFood_bestBefore);
        $('#changeFood_newAmountType').val(selectedFood_amountType);
-       $('#deleteFood_form input').val(selectedFood_name);
+       $('#deleteFood_name').val(selectedFood_name);
     });
 
     $('#changeFood_button').on('click', function() {
@@ -67,15 +66,13 @@ function changeFoodEntry() {
     $('#changeFood_submit').on('click', function(e) {
         e.preventDefault();
 
-        $.post('http://www.louis-and-cartier.com/FoodLibrary/helper/changeExistingFood.php',
-            {
+        $.post('./helper/changeExistingFood.php', {
                 foodName: $('#changeFood_foodName').text(),
                 newFoodName: $('#changeFood_newFoodName').val(),
                 newAmountType: $('#changeFood_newAmountType').val(),
                 newAmount: $('#changeFood_newAmount').val(),
                 newBestBefore: $('#changeFood_newBestBefore').val()
-            }
-        ).done(function (data) {
+        }).then(function (data) {
             data = JSON.parse(data);
             if ( data.status === 'success'){
                 showMessage({
@@ -96,11 +93,9 @@ function changeFoodEntry() {
     $('#deleteFood_submit').on('click', function(e) {
         e.preventDefault();
 
-        $.post('http://www.louis-and-cartier.com/FoodLibrary/helper/deleteExistingFood.php',
-            {
-                foodName: $('#deleteFood_form input').val()
-            }
-        ).done(function (data) {
+        $.post('./helper/deleteExistingFood.php', {
+                foodName: $('#deleteFood_name').val()
+        }).then(function (data) {
             data = JSON.parse(data);
             if (data.status === 'success') {
                 showMessage({
@@ -124,32 +119,42 @@ function changeFoodEntry() {
 // used in loginScreen.php
 function logIn() {
     $('#login_submit').on('click', function (e) {
-
         e.preventDefault();
 
-        $.post('http://www.louis-and-cartier.com/FoodLibrary/helper/login.php',
-            {
+        $.post('./helper/login.php', {
                 userName: $('#login_username').val(),
                 password: $('#login_password').val()
-            },
-            function (data) {
-                data = JSON.parse(data);
-                if ( data.status === 'success'){
-                    console.log(data);
-                    window.location.reload();
-                } else if ( data.status === 'noPermission') {
-                    console.log('Passwort or Benutzername falsch. Bitte versuche es erneut.');
-                } else if ( data.status === 'invalid Form') {
-                    console.log('Forumlar nicht valide.');
-                    console.log(data)
-                } else {
-                    console.log('Da lief was falsch!');
-                }
+        }).then(function (data) {
+            data = JSON.parse(data);
+            if ( data.status === 'success'){
+                window.location.reload();
+            } else if ( data.status === 'noPermission') {
+                console.log('Passwort oder Benutzername falsch. Bitte versuche es erneut.');
+            } else if ( data.status === 'invalid Form') {
+                console.log('Formular nicht valide.');
+            } else {
+                console.log('Huch! Da lief was falsch!');
             }
-        );
+        });
     });
 }
 
+
+// used in isLoggedIn.php
+function logOut() {
+    $('#logout').on('click', function (e) {
+        e.preventDefault();
+
+        $.post('./helper/logout.php').then(function(data) {
+            data = JSON.parse(data);
+            if (data.status === 'success') {
+                window.location.reload();
+            } else if (data.status === 'failed') {
+                console.log('failed')
+            }
+        });
+    });
+}
 
 // used if loginScreen.php
 function signUp() {
@@ -157,12 +162,10 @@ function signUp() {
 
         e.preventDefault();
 
-        var signUp = $.post('http://www.louis-and-cartier.com/FoodLibrary/helper/signUp.php', {
+        $.post('./helper/signUp.php', {
             userName: $('#signup_username').val(),
             password: $('#signup_password').val()
-        });
-
-        signUp.done(function (data) {
+        }).then(function (data) {
             data = JSON.parse(data);
             if ( data.status === 'success'){
                 showMessage({

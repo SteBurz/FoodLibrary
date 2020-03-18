@@ -1,6 +1,7 @@
 body {
-    padding: 2rem 2rem;
-    background-color: #9eaeae;
+    padding: 0 !important;
+    margin-top: 100px;
+    background-color: #7DC2AF;
 }
 
 @media (max-width: 576px) {
@@ -10,13 +11,30 @@ body {
 }
 
 small {
-    color: #7E918F;
+    color: #FFF;
+}
+
+.logout {
+    color: white !important;
+    margin-left: auto;
+    margin-right: 25px;
+}
+
+.logout:hover {
+    cursor: pointer;
+    text-decoration: underline !important;
+}
+
+.foodTable-container {
+    background-color: #F3F3F3;
+    padding: 20px 40px;
+    border-radius: 10px;
 }
 
 .heading {
     margin-bottom: 1rem;
     margin-top: 1rem;
-    color: #7E918F;
+    color: #7DC2AF;
 }
 
 .intro {
@@ -62,13 +80,13 @@ table.dataTable > tbody > tr {
 }
 
 table.dataTable > tbody > tr[foodstatus="danger"] {
-    border-color: #FB4542;
+    border-color: #E27C5F;
 }
 table.dataTable > tbody > tr[foodstatus="warning"] {
-    border-color: #DFEDAB;
+    border-color: #E8A87C;
 }
 table.dataTable > tbody > tr[foodstatus="good"] {
-    border-color: #65af6c;
+    border-color: #40B3A2;
 }
 
 .legende ul {
@@ -88,13 +106,13 @@ table.dataTable > tbody > tr[foodstatus="good"] {
 }
 
 .danger {
-    background-color: #F5C6CB;
+    background-color: #E27C5F;
 }
 .warning {
-    background-color: #FFEEBA;
+    background-color: #E8A87C;
 }
 .good {
-    background-color: #65af6c;
+    background-color: #40B3A2;
 }
 
 .modal-body form {
@@ -116,7 +134,7 @@ table.dataTable > tbody > tr[foodstatus="good"] {
 }
 
 .container .login h2 {
-    color: #7E918F;
+    color: #7DC2AF;
     margin-top: 1.5rem;
     text-align: center;
 }
@@ -124,4 +142,8 @@ table.dataTable > tbody > tr[foodstatus="good"] {
 .container .login form{
     margin-bottom: 1rem;
     padding: 2rem 1rem;
+}
+
+#signUp {
+    color: white !important;
 }

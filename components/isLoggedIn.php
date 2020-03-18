@@ -1,32 +1,37 @@
-<div class="row heading align-self-center">
-    <h1>Food Library</h1>
-</div>
-<div class="row intro">
-    <p>
-        In der Tabelle werden deine Lebensmittel angezeigt.
-        Mit "Lebensmittel hinzufügen" kannst du neue Lebensmittel in die Tabelle eintragen.
-        Benutze das Zahnrad um ein Lebensmittel zu löschen oder zuverändern.
-    </p>
-</div>
-<div class="row addFood">
-    <?php include 'components/addFood.php' ?>
-</div>
+
 <div class="row">
-    <?php include 'components/foodTable.php' ?>
+    <a id="logout" class="logout">Logout</a>
 </div>
-<div class="row">
-    <?php include 'components/changeFood.php' ?>
-</div>
-<div class="row legende font-weight-lighter text-muted">
-    <ul>
-        <li>
-            <span class="danger"></span> MHD überschritten.
-        </li>
-        <li>
-            <span class="warning"></span> Lebensmittel erreicht in 7 Tagen das MHD.
-        </li>
-        <li>
-            <span class="good"></span> MHD ist mehr als 7 Tage entfernt.
-        </li>
-    </ul>
+<div class="foodTable-container">
+    <div class="row heading align-self-center">
+        <h1>Hamster burrow</h1>
+    </div>
+    <div class="row intro">
+        <p>
+            This table shows all your food you hamstered.
+            You can "add food" or you can use the cog to change or delete an existing entry.
+        </p>
+    </div>
+    <div class="row addFood">
+        <?php include 'components/addFood.php' ?>
+    </div>
+    <div class="row">
+        <?php include 'components/foodTable.php' ?>
+    </div>
+    <div class="row">
+        <?php include 'components/changeFood.php' ?>
+    </div>
+    <div class="row legende font-weight-lighter text-muted">
+        <ul>
+            <li>
+                <span class="danger"></span> "Best before" date is due.
+            </li>
+            <li>
+                <span class="warning"></span> Your food will reach the "best before" date in 7 days.
+            </li>
+            <li>
+                <span class="good"></span> "Best before" date is more than 7 days away.
+            </li>
+        </ul>
+    </div>
 </div>

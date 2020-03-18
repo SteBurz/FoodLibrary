@@ -1,15 +1,17 @@
 <?php
-    require '../functions/Manager.php';
+    require '../functions/HandleFood.php';
 
+    $data = new HandleFood();
     $manager = new Manager();
+    $foodTableName = $data->getFoodTableName();
+    $foodName = htmlspecialchars($_POST['foodName']);
+    $foodAmount = htmlspecialchars($_POST['amount']);
+    $foodAmountType = htmlspecialchars($_POST['amountType']);
+    $foodBestBefore = htmlspecialchars($_POST['bestBefore']);
     $conn = $manager->connect();
 
-    $stmt = $conn->prepare("INSERT INTO food (foodName, amount, amountType, bestBefore) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param('siss',
-        htmlspecialchars($_POST['foodName']),
-        htmlspecialchars($_POST['amount']),
-        htmlspecialchars($_POST['amountType']),
-        htmlspecialchars($_POST['bestBefore']));
+    $stmt = $conn->prepare("INSERT INTO $foodTableName (foodName, amount, amountType, bestBefore) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param('siss', $foodName, $foodAmount, $foodAmountType, $foodBestBefore);
     $stmt->execute();
 
     $result = ['status' => 'success'];

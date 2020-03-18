@@ -1,25 +1,32 @@
 <?php
-require '../functions/Manager.php';
+    require '../functions/HandleFood.php';
 
-$manager = new Manager();
-$conn = $manager->connect();
+    $data = new HandleFood();
+    $manager = new Manager();
+    $foodTableName = $data->getFoodTableName();
+    $foodName = htmlspecialchars($_POST['foodName']);
+    $newFoodName = htmlspecialchars($_POST['newFoodName']);
+    $newFoodAmount = htmlspecialchars($_POST['newAmount']);
+    $newFoodAmountType = htmlspecialchars($_POST['newAmountType']);
+    $newFoodBestBefore = htmlspecialchars($_POST['newBestBefore']);
+    $conn = $manager->connect();
 
-$stmt = $conn->prepare("UPDATE food SET  foodName = ?, amount = ?, amountType = ?, bestBefore = ? WHERE foodName = ?");
-$stmt->bind_param(
-    'sisss',
-    htmlspecialchars($_POST['newFoodName']),
-    htmlspecialchars($_POST['newAmount']),
-    htmlspecialchars($_POST['newAmountType']),
-    htmlspecialchars($_POST['newBestBefore']),
-    htmlspecialchars($_POST['foodName'])
-);
+    $stmt = $conn->prepare("UPDATE $foodTableName SET foodName = ?, amount = ?, amountType = ?, bestBefore = ? WHERE foodName = ?");
+    $stmt->bind_param(
+        'sisss',
+        $newFoodName,
+        $newFoodAmount,
+        $newFoodAmountType,
+        $newFoodBestBefore,
+        $foodName
+    );
 
-$stmt->execute();
+    $stmt->execute();
 
-$result = ['status' => 'success'];
+    $result = ['status' => 'success'];
 
-$stmt->close();
-$conn->close();
+    $stmt->close();
+    $conn->close();
 
-echo json_encode($result);
+    echo json_encode($result);
 ?>
