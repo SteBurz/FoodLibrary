@@ -21,7 +21,7 @@
         <div class="col-md-auto">
             <small>
                 Not a user yet?
-                <a href="#signUp" data-toggle="modal" data-target="#signUp">register here.</a>
+                <a href="#signUp" class="registerButton" data-toggle="modal" data-target="#signUp">register here.</a>
             </small>
         </div>
     </div>
