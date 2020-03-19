@@ -4,24 +4,60 @@ body {
     background-color: #7DC2AF;
 }
 
-.registerButton {
-    text-decoration: underline;
-}
-
 @media (max-width: 576px) {
     body {
         padding: 1rem 1rem;
     }
 }
 
+
+/* loginScreen.php */
+
+.logo {
+    width: 90vw;
+    max-width: 400px;
+    padding-left: 0;
+}
+
+.container .login {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 90vw;
+    max-width: 400px;
+}
+
+.container .login h2 {
+    color: #7DC2AF;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.container .login form{
+    margin-bottom: 1rem;
+    padding: 2rem 1rem;
+}
+
+#signUp {
+    color: white !important;
+}
+
+
+.registerButton {
+    text-decoration: underline;
+}
+
 small {
     color: #FFF;
 }
 
+
+/* isLoggedIn.php */
+
 .logout {
     color: white !important;
     margin-left: auto;
-    margin-right: 25px;
+    margin-right: 10px;
+    margin-top: auto;
 }
 
 .logout:hover {
@@ -122,28 +158,4 @@ table.dataTable > tbody > tr[foodstatus="good"] {
 .modal-body h2{
     text-align: center;
     margin: 1rem;
-}
-
-/* loginScreen.php */
-
-.container .login {
-    background-color: #fff;
-    border-radius: 10px;
-    width: 400px;
-    max-width: 100%;
-}
-
-.container .login h2 {
-    color: #7DC2AF;
-    margin-top: 1.5rem;
-    text-align: center;
-}
-
-.container .login form{
-    margin-bottom: 1rem;
-    padding: 2rem 1rem;
-}
-
-#signUp {
-    color: white !important;
 }

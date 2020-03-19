@@ -1,11 +1,9 @@
 
 <div class="row">
-    <a id="logout" class="logout">Logout</a>
+    <h1 class="col-md-auto siteName">Hamster burrow</h1>
+    <a id="logout" class="col-md-auto logout">Logout</a>
 </div>
 <div class="foodTable-container">
-    <div class="row heading align-self-center">
-        <h1>Hamster burrow</h1>
-    </div>
     <div class="row intro">
         <p>
             This table shows all your food you hamstered.

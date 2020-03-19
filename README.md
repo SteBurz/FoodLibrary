@@ -1,4 +1,4 @@
-# FoodLibrary
+# Hamster Burrow
  Manage your groceries.
  
 ## Create a db.config.php

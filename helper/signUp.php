@@ -2,12 +2,12 @@
 
 require '../functions/Manager.php';
 
-$userName   = htmlspecialchars( $_POST['userName'] );
+$userName = htmlspecialchars( $_POST['userName'] );
 
-$manager    = new Manager();
-$conn       = $manager->connect();
+$manager = new Manager();
+$conn = $manager->connect();
 
-$stmt       = $conn->prepare("SELECT userName FROM users WHERE userName= ? ");
+$stmt = $conn->prepare("SELECT userName FROM users WHERE userName= ? ");
 $stmt->bind_param('s', $userName);
 $stmt->execute();
 $stmt->bind_result($user);
@@ -18,14 +18,13 @@ while($stmt->fetch()) {
         $userExists = true;
     }
 }
-
 $stmt->close();
 
 if( !$userExists ){
     $tableName = "food".strtolower($userName);
-    $password   = password_hash ( htmlspecialchars($_POST['password']), PASSWORD_DEFAULT );
+    $password = password_hash ( htmlspecialchars($_POST['password']), PASSWORD_DEFAULT );
 
-    $stmt    = $conn->prepare("INSERT INTO users (userName, password, tableName) VALUES ( ? , ? , ?)");
+    $stmt = $conn->prepare("INSERT INTO users (userName, password, tableName) VALUES ( ? , ? , ?)");
     $stmt->bind_param('sss', $userName, $password, $tableName);
     $stmt->execute();
     $stmt->close();
@@ -34,12 +33,12 @@ if( !$userExists ){
     $stmt->execute();
     $stmt->close();
 
-    $result = ['status'     => 'success',
-               'message'    => 'Registrierung erfolgreich!'];
+    $result = ['status' => 'success',
+               'message' => 'Registrierung erfolgreich!'];
 } else {
 
-    $result = ['status'     => 'userExists',
-               'message'    => 'Email already in use!'];
+    $result = ['status' => 'userExists',
+               'message' => 'Email already in use!'];
 }
 
 echo json_encode($result);

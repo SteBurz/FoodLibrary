@@ -1,6 +1,6 @@
 <?php
 
-require $_SERVER['DOCUMENT_ROOT'].'/FoodLibrary/config/db.config.php';
+require $_SERVER['DOCUMENT_ROOT'].'/hamsterburrow/config/db.config.php';
 
 class Manager {
     function connect() {

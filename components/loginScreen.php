@@ -1,16 +1,17 @@
-
-
 <div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-auto logo">
+            <img src="img/logo.png" alt="bag full of groceries with Hamster Burrow title" title="Hamster Burrow Logo" />
+        </div>
+    </div>
     <div class="row justify-content-md-center">
         <div class="col-md-auto login">
             <h2>Login</h2>
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="login_username">Username</label>
                     <input type="text" class="form-control" id="login_username" aria-describedby="login_username" placeholder="Username">
                 </div>
                 <div class="form-group">
-                    <label for="login_password">Password</label>
                     <input type="password" class="form-control" id="login_password" placeholder="Password">
                 </div>
                 <button type="submit" class="btn btn-primary" id="login_submit">Login</button>
@@ -26,7 +27,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- SignUp -->
 <div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="Registrierung" aria-hidden="true">
